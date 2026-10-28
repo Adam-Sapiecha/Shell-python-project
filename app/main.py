@@ -9,6 +9,8 @@ def main():
         main()
     elif tekst == '':
         main()
+    elif tekst == "exit":
+        sys.exit()
     else:
         print(tekst + ": command not found")
         main()
