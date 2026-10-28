@@ -10,7 +10,7 @@ def main():
     elif tekst == '':
         main()
     else:
-        print("Unknown command")
+        print(tekst + ": command not found")
         main()
     pass
 
