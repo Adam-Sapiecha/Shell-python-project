@@ -7,6 +7,8 @@ def main():
     if tekst == "echo" or tekst == "cd":
         pass
         main()
+    elif tekst == '':
+        main()
     else:
         print("Unknown command")
         main()
