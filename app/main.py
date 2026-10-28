@@ -4,8 +4,8 @@ import sys
 def main():
     sys.stdout.write("$ ")
     tekst = input()
-    if tekst == "echo" or tekst == "cd":
-        pass
+    if tekst == "echo":
+        print(tekst)
         main()
     elif tekst == '':
         main()
