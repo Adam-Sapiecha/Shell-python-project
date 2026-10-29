@@ -15,7 +15,7 @@ class ExitCommand(Command):
 class InvalidCommand(Command):
     @staticmethod
     def run(args):
-        print('Unknown command')
+        print(' '.join(args) + ': command not found')
 class LsCommand(Command):
     @staticmethod
     def run(args):
