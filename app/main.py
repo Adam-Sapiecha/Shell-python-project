@@ -1,22 +1,41 @@
 import sys
 
+class Command:
+    @staticmethod
+    def run():
+        print('$ ')
+class EchoCommand(Command):
+    @staticmethod
+    def run(args):
+        print(" ".join(args[1:]))
+class ExitCommand(Command):
+    @staticmethod
+    def run(args):
+        sys.exit()
+class InvalidCommand(Command):
+    @staticmethod
+    def run(args):
+        print('Unknown command')
+class LsCommand(Command):
+    @staticmethod
+    def run(args):
+        print('not implemented yet')
+
+
 
 def main():
-    sys.stdout.write("$ ")
-    tekst = input()
-    if tekst == "echo":
-        print(tekst)
-        main()
-    elif tekst == '':
-        main()
-    elif tekst == "exit":
-        sys.exit()
-    else:
-        print(tekst + ": command not found")
-        main()
-    pass
-
-
+    while True:
+        tekst = input('$ ')
+        args = list(tekst.split())
+        dic = {
+            'echo' : EchoCommand.run,
+            'ls' : LsCommand.run,
+            'exit' : ExitCommand.run
+        }
+        if not args:
+            continue
+        command = dic.get(args[0], InvalidCommand.run)
+        command(args)
 
 
 if __name__ == "__main__":
