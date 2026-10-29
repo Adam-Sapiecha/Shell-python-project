@@ -23,10 +23,10 @@ class LsCommand(Command):
 class TypeCommand(Command):
     @staticmethod
     def run(args):
-        if args in Dic.dic:
-            print(Dic.dic.get(args) + 'is a shell builtin')
+        if ' '.join(args[1:]) in Dic.dic:
+            print(' '.join(args[1:]) + ' is a shell builtin')
         else: 
-            print(args + ': not found')     
+            print(' '.join(args[1:]) + ': not found')     
 class Dic:
     dic = {
         'echo' : EchoCommand.run,
