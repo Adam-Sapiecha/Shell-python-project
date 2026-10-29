@@ -20,21 +20,29 @@ class LsCommand(Command):
     @staticmethod
     def run(args):
         print('not implemented yet')
-
+class TypeCommand(Command):
+    @staticmethod
+    def run(args):
+        if args in Dic.dic:
+            print(Dic.dic.get(args) + 'is a shell builtin')
+        else: 
+            print(args + ': not found')     
+class Dic:
+    dic = {
+        'echo' : EchoCommand.run,
+        'ls' : LsCommand.run,
+        'exit' : ExitCommand.run,
+        'type' : TypeCommand.run
+    }
 
 
 def main():
     while True:
         tekst = input('$ ')
         args = list(tekst.split())
-        dic = {
-            'echo' : EchoCommand.run,
-            'ls' : LsCommand.run,
-            'exit' : ExitCommand.run
-        }
         if not args:
             continue
-        command = dic.get(args[0], InvalidCommand.run)
+        command = Dic.dic.get(args[0], InvalidCommand.run)
         command(args)
 
 
