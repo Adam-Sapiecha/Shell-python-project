@@ -37,7 +37,7 @@ class Dic:
 
 
 def main():
-    while True:
+    while tekst != 'exit':
         tekst = input('$ ')
         args = list(tekst.split())
         if not args:
